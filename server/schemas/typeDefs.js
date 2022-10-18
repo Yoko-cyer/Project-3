@@ -5,7 +5,6 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
-    password: String
     phonenumber: String
     introduction: String
     candolightduties: Boolean
@@ -15,6 +14,7 @@ const typeDefs = gql`
     candopickupdropoff: Boolean
     covidvaccinated: Boolean
     availabledays:[ String]
+    comments: [Comment]
   }
   type Comment{
     text: String

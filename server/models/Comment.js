@@ -12,15 +12,13 @@ const commentSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
-   
   },
   {
-    
     timestamps: true,
     id: true,
   }
 );
 
-const Comment = model('comment', commentSchema);
+const Comment = model('Comment', commentSchema);
 
 module.exports = Comment;
