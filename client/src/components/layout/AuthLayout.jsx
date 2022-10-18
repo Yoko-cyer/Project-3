@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from "react-router-dom";
 import { Container } from "@mui/system";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 const AuthLayout = () => {
   return (
@@ -14,9 +14,11 @@ const AuthLayout = () => {
             alignItems: "center",
             flexDirection: "column"
           }}>
-          Find your baby sitter
+          Find a baby sitter and parents in need of their children's care
         </Box>
         <Outlet />
+        <Button variant="contained">Sign up</Button>
+        <Button variant="contained">Login</Button>
 
       </Container>
     </div>
