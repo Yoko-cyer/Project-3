@@ -4,7 +4,7 @@ import { Box, TextField, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 
 import { useMutation } from '@apollo/client';
-import { ADD_PROFILE } from '../utils/mutations';
+import { ADD_USER } from '../utils/mutations';
 
 import Auth from '../utils/auth';
 
@@ -23,6 +23,13 @@ const Signup = () => {
     email: '',
     password: '',
   });
+
+  const handleSubmit = async (e) => {
+        e.preventDefault();
+        setUsernameErrText("");
+        setPasswordErrText("");
+        setConfirmErrText("");
+  }
   // const [addProfile, { error, data }] = useMutation(ADD_PROFILE);
 
   // update state based on form input changes
@@ -36,20 +43,20 @@ const Signup = () => {
   // };
 
   // submit form
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log(formState);
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   console.log(formState);
 
-    try {
-      const { data } = await addProfile({
-        variables: { ...formState },
-      });
+  //   try {
+  //     const { data } = await addUser({
+  //       variables: { ...formState },
+  //     });
 
-      Auth.login(data.addProfile.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
+  //     Auth.login(data.addProfile.token);
+  //   } catch (e) {
+  //     console.error(e);
+  //   }
+  // };
 
   return (
     <>

@@ -35,7 +35,7 @@ export const QUERY_SINGLE_USER = gql`
       candopickupdropoff
       covidvaccinated
       availabledays
-      
+      comments
     }
   }
 `;
@@ -50,14 +50,14 @@ export const QUERY_SINGLE_USER = gql`
 //   }
 // `;
 
-export const QUERY_COMMENTS = gql`
-  query getComments {
-    comments {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-    }
-  }
-`;
+// export const QUERY_COMMENTS = gql`
+//   query getComments {
+//     comments {
+//       _id
+//       thoughtText
+//       thoughtAuthor
+//       createdAt
+//     }
+//   }
+// `;
 
