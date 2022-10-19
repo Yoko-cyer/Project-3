@@ -1,30 +1,28 @@
 import React from 'react';
-import { useQuery } from '@apollo/client';
-
-import ProfileList from '../components/ProfileList';
-
-import { QUERY_PROFILES } from '../utils/queries';
+import { Outlet } from "react-router-dom";
+import { Container } from "@mui/system";
+import { Box, Button } from "@mui/material";
 
 const Home = () => {
-  const { loading, data } = useQuery(QUERY_PROFILES);
-  const profiles = data?.profiles || [];
-
   return (
-    <main>
-      <div className="flex-row justify-center">
-        <div className="col-12 col-md-10 my-3">
-          {loading ? (
-            <div>Loading...</div>
-          ) : (
-            <ProfileList
-              profiles={profiles}
-              title="Find your baby sitter and parents that suites you."
-            />
-          )}
-        </div>
-      </div>
-    </main>
-  );
-};
+    <div>
+      <Container component="main" maxWidth="xs">
+        <Box 
+          sx={{
+            marginTop: 2,
+            display: "flex",
+            alignItems: "center",
+            flexDirection: "column"
+          }}>
+          Find a baby sitter and parents in need of their children's care
+        </Box>
+        <Outlet />
+        <Button variant="contained">Sign up</Button>
+        <Button variant="contained">Login</Button>
 
-export default Home;
+      </Container>
+    </div>
+  )
+}
+
+export default Home
