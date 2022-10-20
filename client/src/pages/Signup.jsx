@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Box, TextField, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
+import Checkbox from '@material-ui/core/Checkbox';
+
 
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -16,12 +18,23 @@ const Signup = () => {
   const [passwordErrText, setPasswordErrText] = useState("");
   const [confirmErrText, setConfirmErrText] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
   
   
   const [formState, setFormState] = useState({
-    name: '',
+    username: '',
     email: '',
     password: '',
+    phonenumber: '',
+    introduction: '',
+    wanttobabysit: '',
+    haslicense: '',
+    howmuchexperience: '',
+    candolightduties: '',
+    candopickupdropoff: '',
+    covidvaccinated: '',
+    availabledays: ''
   });
 
   const handleSubmit = async (e) => {
@@ -60,7 +73,12 @@ const Signup = () => {
 
   return (
     <>
-    <Box component="form" onSubmit={handleSubmit} noValidate>
+    
+    <Box 
+      component="form" 
+      onSubmit={handleSubmit} 
+      noValidate 
+    >
       <TextField 
         fullWidth 
         id="username" 
@@ -96,6 +114,54 @@ const Signup = () => {
         error={confirmErrText !== ""}
         disabled={loading}
       />
+      <TextField 
+        fullWidth 
+        id="phonenumber" 
+        label="phonenumber" 
+        margin="normal"
+        name="phonenumber"
+        required
+        helperText={usernameErrText}
+        error={usernameErrText !== ""}
+        disabled={loading}
+      />
+      <h4>Tell us about yourself.</h4>
+      <TextField 
+        fullWidth 
+        id="introduction" 
+        label="introduction" 
+        margin="normal"
+        name="introduction"
+        required
+        helperText={usernameErrText}
+        error={usernameErrText !== ""}
+        disabled={loading}
+      />
+      <h4>Will you be a baby sitter?</h4>
+      <Checkbox {...label} />
+      <h4>How long is your experience as a baby sitter?</h4>
+      <TextField 
+        fullWidth 
+        id="introduction" 
+        label="introduction" 
+        margin="normal"
+        name="introduction"
+        required
+        helperText={usernameErrText}
+        error={usernameErrText !== ""}
+        disabled={loading}
+      />
+      <h4>Do you have your Blue card ?</h4>
+      <Checkbox {...label} />
+      <h4>Can you do light duties?</h4>
+      <Checkbox {...label} />
+      <h4>Can you do pick up and drop off?</h4>
+      <Checkbox {...label} />
+      <h4>Are you Covid vaccinated?</h4>
+      <Checkbox {...label} />
+      <h4>What are your available days?</h4>
+      <Checkbox {...label} />
+    
       <LoadingButton 
         sx={{ mt: 3, mb: 2}} 
         fullWidth 
@@ -116,78 +182,3 @@ const Signup = () => {
 
 export default Signup;
 
-
-
-// const Register = () => {
-
- 
-//   const handleSubmit = async (e) => {
-//     e.preventDefault();
-//     setUsernameErrText("");
-//     setPasswordErrText("");
-//     setConfirmErrText("");
-
-//     // get data from the front-end
-//     const data = new FormData(e.target);
-//     const username = data.get("username").trim();
-//     const password = data.get("password").trim();
-//     const confirmPassword = data.get("confirmPassword").trim();
-//     console.log(username);
-//     console.log(password);
-//     console.log(confirmPassword);
-
-//     let error = false;
-
-//     if (username === "") {
-//       error = true;
-//       setUsernameErrText("Enter your username.");
-//     }
-//     if (password === "") {
-//       error = true;
-//       setPasswordErrText("Enter your password.");
-//     }
-//     if (confirmPassword === "") {
-//       error = true;
-//       setConfirmErrText("Enter your confirmed password.");
-//     }
-//     if (password !== confirmPassword) {
-//       error = true;
-//       setConfirmErrText("Password and confirmed password don't match.");
-//     }
-    
-//     if (error) return;
-
-//     setLoading(true);
-
-//     // register api
-//     try {
-//       const res = await authApi.register({
-//         username,
-//         password,
-//         confirmPassword
-//       });
-//       setLoading(false);
-//       localStorage.setItem("token", res.token);
-//       console.log("register successful");
-//       navigate("/");
-//     } catch (err) {
-//       const errors = err.data.errors;
-//       console.log(errors);
-//       errors.forEach((err) => {
-//         if (err.param === "username") {
-//           setUsernameErrText(err.msg);
-//         }
-//         if (err.param === "password") {
-//           setPasswordErrText(err.msg);
-//         }
-//         if (err.param === "confirmPassword") {
-//           setConfirmErrText(err.msg);
-//         }
-//       });
-//       setLoading(false);
-//     }
-//   };
- 
-// };
-
-// export default Register

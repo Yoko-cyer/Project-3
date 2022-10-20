@@ -1,8 +1,13 @@
 import React from 'react'
 
+const costomStyle = {
+  backgroundColor: "#ff7f50",
+  color: "#ffffff"
+}
+
 const Footer = () => {
   return (
-    <div>Footer</div>
+    <div style={costomStyle}>Footer</div>
   )
 }
 
