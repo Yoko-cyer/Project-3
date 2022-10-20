@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate, Link  } from "react-router-dom";
 import { Container } from "@mui/system";
 import { Box, Button } from "@mui/material";
 
@@ -17,8 +17,8 @@ const Home = () => {
           Find a baby sitter and parents in need of their children's care
         </Box>
         <Outlet />
-        <Button variant="contained">Sign up</Button>
-        <Button variant="contained">Login</Button>
+        <Button variant="contained" component={Link} to="/signup">Sign up</Button>
+        <Button variant="contained" component={Link} to="/login">Login</Button>
 
       </Container>
     </div>

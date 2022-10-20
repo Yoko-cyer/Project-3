@@ -8,7 +8,7 @@ const commentSchema = new Schema(
       minLength: 1,
       maxLength: 280,
     },
-    babysitter: {
+    user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },

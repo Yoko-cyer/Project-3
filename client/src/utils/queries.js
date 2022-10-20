@@ -5,16 +5,16 @@ export const QUERY_USERS = gql`
     users {
       _id
       username
-      email
-      phonenumber
       introduction
-      candolightduties
       wanttobabysit
-      haslicense
-      howmuchexperience
-      candopickupdropoff
-      covidvaccinated
-      availabledays
+      # email
+      # phonenumber
+      # candolightduties
+      # haslicense
+      # howmuchexperience
+      # candopickupdropoff
+      # covidvaccinated
+      # availabledays
     }
   }
 `;
@@ -40,24 +40,15 @@ export const QUERY_SINGLE_USER = gql`
   }
 `;
 
-// export const QUERY_ME = gql`
-//   query me {
-//     me {
-//       _id
-//       name
-//       skills
-//     }
-//   }
-// `;
 
-// export const QUERY_COMMENTS = gql`
-//   query getComments {
-//     comments {
-//       _id
-//       thoughtText
-//       thoughtAuthor
-//       createdAt
-//     }
-//   }
-// `;
+export const QUERY_COMMENTS = gql`
+  query getComments {
+    comments {
+      _id
+      thoughtText
+      thoughtAuthor
+      createdAt
+    }
+  }
+`;
 

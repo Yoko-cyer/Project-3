@@ -24,22 +24,18 @@ const userSchema = new Schema({
     phonenumber: {
         type: String,
         required: true,
-       
     },
     wanttobabysit: {
         type: Boolean,
-        required: true,
-        
+        required: true,     
     },
     haslicense: {
         type: Boolean,
-        required: true,
-        
+        required: true,        
     },
     howmuchexperience: {
         type: String,
-        required: true,
-       
+        required: true,  
     },
     candolightduties: {
         type: Boolean,
@@ -54,7 +50,6 @@ const userSchema = new Schema({
     covidvaccinated: {
         type: Boolean,
         required: true,
-       
     },
     introduction: 
         {
