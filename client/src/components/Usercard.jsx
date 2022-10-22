@@ -19,7 +19,7 @@ const Usercard = (props) => {
           {props.name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          I am avilable {props.avalabledays}.
+          I am avilable on {props.avalabledays}.
         </Typography>
         <Typography variant="body2">
           {props.introduction}

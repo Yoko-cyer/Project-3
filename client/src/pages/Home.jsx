@@ -2,6 +2,8 @@ import React from 'react';
 import { Outlet, Link  } from "react-router-dom";
 import { Container } from "@mui/system";
 import { Box, Button } from "@mui/material";
+import { useQuery } from '@apollo/client';
+
 
 const Home = () => {
   return (

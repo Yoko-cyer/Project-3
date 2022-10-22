@@ -18,6 +18,7 @@ import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Singleuser from './pages/Singleuser';
+import Profile from './pages/Profile';
 
 // adding the jwt to every outgoing http req
 // Construct our main GraphQL API endpoint
@@ -62,6 +63,7 @@ function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/login" element={<Login />} />
                   <Route path="/signup" element={<Signup />} />
+                  <Route path="/profile" element={<Profile />} />
                   <Route path="/dashboard" element={<Dashboard />} />
                   <Route path="/singleuser/:userId" element={<Singleuser />} />
                 </Routes>  
