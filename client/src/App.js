@@ -17,21 +17,19 @@ import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import AuthLayout from './components/AuthLayout';
+import Singleuser from './pages/Singleuser';
 
+// adding the jwt to every outgoing http req
+// Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
+// Construct request middleware that will attach the JWT token to every request as an `authorization` header
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem('id_token');
   // return the headers to the context so httpLink can read them
-
-  const theme = createTheme({
-    palette: { primary: blue }
-  });
-
   return {
     headers: {
       ...headers,
@@ -41,6 +39,7 @@ const authLink = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
+  // Set up our client to execute the `authLink` middleware prior to making the request to our GraphQL API
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
@@ -55,17 +54,21 @@ function App() {
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
         <CssBaseline/>
-          <Header/>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="/dashboard/:userId" element={<Dashboard />} />
-            </Routes>  
-          </Router>
-        <Footer/>
+          <div className="flex-column justify-flex-start min-100-vh">
+
+            <Router>
+              <Header/>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/signup" element={<Signup />} />
+                  <Route path="/dashboard" element={<Dashboard />} />
+                  <Route path="/singleuser/:userId" element={<Singleuser />} />
+                </Routes>  
+              <Footer/>
+            </Router>
+
+          </div>
       </ThemeProvider>
     </ApolloProvider>
   );

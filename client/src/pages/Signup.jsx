@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Box, TextField, Button } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import Checkbox from '@material-ui/core/Checkbox';
+import FormGroup from '@mui/material/FormGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 import { useMutation } from '@apollo/client';
@@ -139,13 +141,14 @@ const Signup = () => {
       />
       <h4>Will you be a baby sitter?</h4>
       <Checkbox {...label} />
+
       <h4>How long is your experience as a baby sitter?</h4>
       <TextField 
         fullWidth 
-        id="introduction" 
-        label="introduction" 
+        id="experience" 
+        label="your experience" 
         margin="normal"
-        name="introduction"
+        name="experience"
         required
         helperText={usernameErrText}
         error={usernameErrText !== ""}
@@ -153,14 +156,26 @@ const Signup = () => {
       />
       <h4>Do you have your Blue card ?</h4>
       <Checkbox {...label} />
+
       <h4>Can you do light duties?</h4>
       <Checkbox {...label} />
+      
       <h4>Can you do pick up and drop off?</h4>
       <Checkbox {...label} />
+      
       <h4>Are you Covid vaccinated?</h4>
       <Checkbox {...label} />
+      
       <h4>What are your available days?</h4>
-      <Checkbox {...label} />
+      <FormGroup>
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Monday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Tuesday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Wedneday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Thursday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Friday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Saturday" />
+        <FormControlLabel control={<Checkbox defaultChecked />} label="Sunday" />
+      </FormGroup>
     
       <LoadingButton 
         sx={{ mt: 3, mb: 2}} 
