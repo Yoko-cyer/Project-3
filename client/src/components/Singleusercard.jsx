@@ -24,16 +24,31 @@ const Singleusercard = (props) => {
           {props.name}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          I am avilable {props.avalabledays}.
+          I am avilable {props.availabledays}.
         </Typography>
         <Typography variant="body2">
           {props.introduction}
         </Typography>
+        <Typography variant="body2">
+          {howmuchexperience}
+        </Typography>
+        <Typography variant="body2">
+          {covidvaccinated}
+        </Typography>
+        <Typography variant="body2">
+          {haslicense}
+        </Typography>
+        <Typography variant="body2">
+          Can you do light duties? {candolightduties}
+        </Typography>
+        <Typography variant="body2">
+          Can you do pickup and drop off? {candopickupdropoff}
+        </Typography>
+        <Typography variant="body2">
+          Here are my comments. 
+        </Typography>
       </CardContent>
-      <CardActions>
-
-        <Button size="small" component={Link} to="/singleuser/:id">View More</Button>
-      </CardActions>
+      
     </Card>
     </div>
   )

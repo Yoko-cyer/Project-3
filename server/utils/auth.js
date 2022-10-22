@@ -29,9 +29,9 @@ module.exports = {
     return req;
   },
   // destructuring 
-  signToken: function ({ email, name, _id }) {
+  signToken: function ({ email, username, _id }) {
     // actual contents of JWT to decrypt
-    const payload = { email, name, _id };
+    const payload = { email, username, _id };
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
 };
