@@ -7,14 +7,14 @@ export const ADD_USER = gql`
       email: $email, 
       password: $password, 
       introduction: $introduction,
-      availabledays; $availabledays,
-      phonenumber; $phonenumber,
-      wanttobabysit; $wanttobabysit,
-      haslicense; $haslicense,
-      howmuchexperience; $howmuchexperience,
-      candolightduties; $candolightduties,
-      candopickupdropoff; $candopickupdropoff,
-      covidvaccinated; $covidvaccinated
+      # availabledays; $availabledays,
+      # phonenumber; $phonenumber,
+      # wanttobabysit; $wanttobabysit,
+      # haslicense; $haslicense,
+      # howmuchexperience; $howmuchexperience,
+      # candolightduties; $candolightduties,
+      # candopickupdropoff; $candopickupdropoff,
+      # covidvaccinated; $covidvaccinated
       ) {
       token
       user {

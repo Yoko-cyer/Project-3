@@ -8,10 +8,15 @@ import { Link } from 'react-router-dom';
 
 
 
-const Usercard = (props) => {
+const Singleusercard = (props) => {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <div>
+      <Card sx={{ minWidth: 275 }}>
       <CardContent>
+      <h2>Learn more about {props.name}</h2>
+      <p>
+        This is a details of this user and comments.
+      </p>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
           Hello, I am a {props.role}.
         </Typography>
@@ -30,8 +35,8 @@ const Usercard = (props) => {
         <Button size="small" component={Link} to="/singleuser/:id">View More</Button>
       </CardActions>
     </Card>
-  );
-  
+    </div>
+  )
 }
 
-export default Usercard
+export default Singleusercard
