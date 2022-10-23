@@ -30,19 +30,19 @@ const Singleusercard = (props) => {
           {props.introduction}
         </Typography>
         <Typography variant="body2">
-          {howmuchexperience}
+          {/* {howmuchexperience} */}
         </Typography>
         <Typography variant="body2">
-          {covidvaccinated}
+          {/* {covidvaccinated} */}
         </Typography>
         <Typography variant="body2">
-          {haslicense}
+          {/* {haslicense} */}
         </Typography>
         <Typography variant="body2">
-          Can you do light duties? {candolightduties}
+          {/* Can you do light duties? {candolightduties} */}
         </Typography>
         <Typography variant="body2">
-          Can you do pickup and drop off? {candopickupdropoff}
+          {/* Can you do pickup and drop off? {candopickupdropoff} */}
         </Typography>
         <Typography variant="body2">
           Here are my comments. 
