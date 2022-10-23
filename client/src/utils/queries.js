@@ -2,44 +2,46 @@ import { gql } from '@apollo/client';
 
 export const QUERY_USERS = gql`
   query QueryAllUser {
-  users {
-    _id
-    username
-    email
-    phonenumber
-    introduction
-    candolightduties
-    haslicense
-    wanttobabysit
-    howmuchexperience
-    candopickupdropoff
-    covidvaccinated
-    availabledays
-    comments {
-      text
-    }
+    # what is definded in typeDef
+    users {
+      _id
+      username
+      email
+      phonenumber
+      introduction
+      candolightduties
+      haslicense
+      wanttobabysit
+      howmuchexperience
+      candopickupdropoff
+      covidvaccinated
+      availabledays
+      comments {
+        text
+      }
   }
 }
 `;
 
 export const QUERY_SINGLE_USER = gql`
   query querySingleUser($userId: ID!) {
-  user(userId: $userId) {
-    username
-    email
-    phonenumber
-    introduction
-    candolightduties
-    wanttobabysit
-    haslicense
-    howmuchexperience
-    candopickupdropoff
-    covidvaccinated
-    availabledays
-    comments {
-      text
+    user(userId: $userId) {
+      _id
+      username
+      email
+      phonenumber
+      introduction
+      candolightduties
+      wanttobabysit
+      haslicense
+      howmuchexperience
+      candopickupdropoff
+      covidvaccinated
+      availabledays
+      comments {
+        text
+      }
     }
-  }
 }
 `;
 
