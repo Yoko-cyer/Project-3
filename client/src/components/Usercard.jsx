@@ -6,8 +6,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
-
 const Usercard = ({ users, title }) => {
+
+  
 
   if (!users.length) {
     return <h3>No Profiles Yet</h3>;

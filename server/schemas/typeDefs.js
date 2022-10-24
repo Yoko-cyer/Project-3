@@ -8,13 +8,7 @@ const typeDefs = gql`
     password: String
     phonenumber: String
     introduction: String
-    # candolightduties: Boolean
-    # wanttobabysit: Boolean
-    # haslicense: Boolean
-    # howmuchexperience: String
-    # candopickupdropoff: Boolean
-    # covidvaccinated: Boolean
-    # availabledays:[ String]
+   
     comments: [Comment]
   }
   type Comment{
@@ -38,7 +32,7 @@ const typeDefs = gql`
     addComment(Text: String!):Comment
     # addIntroduction(userId: ID!, introduction: String!): User
     deleteMyAccount: User
-    updateMyAccount(phonenumber: String!, introduction: String!): User
+    updateUser(phonenumber: String!, introduction: String!): User
    }
 `;
 

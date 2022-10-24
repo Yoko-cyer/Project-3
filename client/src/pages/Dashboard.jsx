@@ -1,22 +1,16 @@
 import React from 'react';
 import Usercard from '../components/Usercard';
 import { useQuery } from '@apollo/client'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@mui/material';
 import { QUERY_SINGLE_USER } from '../utils/queries';
 
-// function createCard(user) {
-  
-//   return <Usercard 
-//     key={user.id}
-//     name={user.name} 
-//     phonenumber={user.phonenumber} 
-//     introduction={user.introduction} 
-//   />
-// }
+// import { useMutation } from "@apollo/client"; //
+// import Auth from "../utils/auth";
+
 
 const Dashboard = () => {
-  
+ 
   const { loading, data, error } = useQuery(QUERY_SINGLE_USER);
   const user = data?.user || [];
 

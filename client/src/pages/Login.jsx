@@ -2,20 +2,22 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
+import Dashboard from './Dashboard';
 
 import Auth from '../utils/auth';
 
-const Login = (props) => {
+const Login = () => {
+
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
   // update state based on form input changes
   const handleChange = (event) => {
-    const { username, value } = event.target;
+    const { id, value } = event.target;
 
     setFormState({
       ...formState,
-      [username]: value,
+      [id]: value,
     });
   };
 
@@ -49,8 +51,7 @@ const Login = (props) => {
           <div className="card-body">
             {data ? (
               <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/dashboard" component={Dashboard}>Go to dashboard</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
@@ -61,7 +62,7 @@ const Login = (props) => {
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
-                  // autocomplete="current-email"
+							    autoComplete="off"
                 />
                 <input
                   className="form-input"
@@ -70,7 +71,7 @@ const Login = (props) => {
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
-                  autocomplete="current-password"
+							    autoComplete="off"
                 />
                 <button
                   className="btn btn-block btn-info"

@@ -31,13 +31,6 @@ export const QUERY_SINGLE_USER = gql`
       email
       phonenumber
       introduction
-      # candolightduties
-      # wanttobabysit
-      # haslicense
-      # howmuchexperience
-      # candopickupdropoff
-      # covidvaccinated
-      # availabledays
       comments {
         text
       }
