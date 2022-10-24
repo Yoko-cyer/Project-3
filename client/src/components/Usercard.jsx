@@ -7,29 +7,44 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 
 
+const Usercard = ({ users, title }) => {
 
-const Usercard = (props) => {
+  if (!users.length) {
+    return <h3>No Profiles Yet</h3>;
+  }
+
   return (
-    <Card sx={{ minWidth: 275 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Hello, I am a {props.role}.
-        </Typography>
-        <Typography variant="h5" component="div">
-          {props.name}
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          I am avilable on {props.avalabledays}.
-        </Typography>
-        <Typography variant="body2">
-          {props.introduction}
-        </Typography>
-      </CardContent>
-      <CardActions>
+    <div className="flex-row justify-space-between my-4">
+      <h3 className="text-primary">{title}</h3>
+      {users &&
+        users.map((user) => (
 
-        <Button size="small" component={Link} to="/singleuser/:id">View More</Button>
-      </CardActions>
-    </Card>
+      <Card sx={{ minWidth: 275 }}>
+        <CardContent key={user._id}>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            Hello, I am a {user.username}.
+          </Typography>
+          <Typography variant="h5" component="div">
+            {user.username}
+          </Typography>
+          <Typography sx={{ mb: 1.5 }} color="text.secondary">
+            My phone number is {user.phonenumber}.
+          </Typography>
+          <Typography variant="body2">
+            {user.introduction}
+          </Typography>
+          <Typography variant="body2">
+            Here are my comments. 
+          </Typography>
+        </CardContent>
+
+        <CardActions>
+          <Button size="small" component={Link} to="/singleuser/:id">View Comments</Button>
+        </CardActions>
+      </Card>
+      ))}
+    </div>
+
   );
   
 }

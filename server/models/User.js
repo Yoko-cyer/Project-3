@@ -23,47 +23,50 @@ const userSchema = new Schema({
      },
     phonenumber: {
         type: String,
-        required: true,
-    },
-    wanttobabysit: {
-        type: Boolean,
-        required: true,     
-    },
-    haslicense: {
-        type: Boolean,
-        required: true,        
-    },
-    howmuchexperience: {
-        type: String,
-        required: true,  
-    },
-    candolightduties: {
-        type: Boolean,
-        required: true,
-        
-    },
-    candopickupdropoff: {
-        type: Boolean,
-        required: true,
-        
-    },
-    covidvaccinated: {
-        type: Boolean,
-        required: true,
+        // required: true,
     },
     introduction: 
         {
           type: String,
           trim: true,
+        //   required: 'Leave your introduction please!',
+          minlength: 1,
+          maxlength: 280,
         },
-    availabledays:[
-    {
-        type: String,
-          trim: true,
-    },
-],
+//     wanttobabysit: {
+//         type: Boolean,
+//         // required: true,     
+//     },
+//     haslicense: {
+//         type: Boolean,
+//         // required: true,        
+//     },
+//     howmuchexperience: {
+//         type: String,
+//         // required: true,  
+//     },
+//     candolightduties: {
+//         type: Boolean,
+//         // required: true,
+        
+//     },
+//     candopickupdropoff: {
+//         type: Boolean,
+//         // required: true,
+        
+//     },
+//     covidvaccinated: {
+//         type: Boolean,
+//         // required: true,
+//     },
+//     availabledays:[
+//     {
+//         type: String,
+//           trim: true,
+//     },
+// ],
 
-    comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+//     comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
     
 }
 );

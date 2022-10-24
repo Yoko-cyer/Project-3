@@ -9,13 +9,13 @@ export const QUERY_USERS = gql`
       email
       phonenumber
       introduction
-      candolightduties
-      haslicense
-      wanttobabysit
-      howmuchexperience
-      candopickupdropoff
-      covidvaccinated
-      availabledays
+      # candolightduties
+      # haslicense
+      # wanttobabysit
+      # howmuchexperience
+      # candopickupdropoff
+      # covidvaccinated
+      # availabledays
       comments {
         text
       }
@@ -31,13 +31,13 @@ export const QUERY_SINGLE_USER = gql`
       email
       phonenumber
       introduction
-      candolightduties
-      wanttobabysit
-      haslicense
-      howmuchexperience
-      candopickupdropoff
-      covidvaccinated
-      availabledays
+      # candolightduties
+      # wanttobabysit
+      # haslicense
+      # howmuchexperience
+      # candopickupdropoff
+      # covidvaccinated
+      # availabledays
       comments {
         text
       }

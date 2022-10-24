@@ -2,7 +2,7 @@ import React from 'react';
 import { Outlet, Link  } from "react-router-dom";
 import { Container } from "@mui/system";
 import { Box, Button } from "@mui/material";
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 
 
 const Home = () => {
@@ -21,6 +21,8 @@ const Home = () => {
         <Outlet />
         <Button variant="contained" component={Link} to="/signup">Sign up</Button>
         <Button variant="contained" component={Link} to="/login">Login</Button>
+        <Button variant="contained" component={Link} to="/profile">Create Profile</Button>
+        <Button variant="contained" component={Link} to="/dashbord">Go to dashborad</Button>
 
       </Container>
     </div>

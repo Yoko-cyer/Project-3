@@ -11,11 +11,11 @@ const Login = (props) => {
 
   // update state based on form input changes
   const handleChange = (event) => {
-    const { name, value } = event.target;
+    const { username, value } = event.target;
 
     setFormState({
       ...formState,
-      [name]: value,
+      [username]: value,
     });
   };
 
@@ -61,6 +61,7 @@ const Login = (props) => {
                   type="email"
                   value={formState.email}
                   onChange={handleChange}
+                  // autocomplete="current-email"
                 />
                 <input
                   className="form-input"
@@ -69,6 +70,7 @@ const Login = (props) => {
                   type="password"
                   value={formState.password}
                   onChange={handleChange}
+                  autocomplete="current-password"
                 />
                 <button
                   className="btn btn-block btn-info"
