@@ -5,15 +5,10 @@ const typeDefs = gql`
     _id: ID
     username: String
     email: String
+    password: String
     phonenumber: String
     introduction: String
-    candolightduties: Boolean
-    wanttobabysit: Boolean
-    haslicense: Boolean
-    howmuchexperience: String
-    candopickupdropoff: Boolean
-    covidvaccinated: Boolean
-    availabledays:[ String]
+   
     comments: [Comment]
   }
   type Comment{
@@ -34,10 +29,10 @@ const typeDefs = gql`
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-
-    addIntroduction(userId: ID!, introduction: String!): User
+    addComment(Text: String!):Comment
+    # addIntroduction(userId: ID!, introduction: String!): User
     deleteMyAccount: User
-    updateMyAccount(phonenumber: String!, wanttobabysit: Boolean!,  howmuchexperience: String!, haslicense: Boolean!, candolightduties: Boolean!, candopickupdropoff: Boolean!, covidvaccinated: Boolean!, availabledays: String!): User
+    updateUser(phonenumber: String!, introduction: String!): User
    }
 `;
 

@@ -5,7 +5,9 @@ const costomStyle = {
   color: "#ffffff",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
+  // position: "absolute",
+  // bottom: 0
 }
 const contributer1 = "Alice";
 const contributer2= "Yoko";

@@ -2,26 +2,14 @@ import { gql } from '@apollo/client';
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(
-      username: $username, 
-      email: $email, 
-      password: $password, 
-      ) {
+    addUser(username: $username, email: $email, password: $password, ) {
       token
       user {
-        _id
+        # _id
         username
         email
-        # password
-        # introduction
-        # availabledays
-        # phonenumber
-        # wanttobabysit
-        # haslicense
-        # howmuchexperience
-        # candolightduties
-        # candopickupdropoff
-        # covidvaccinated
+        phonenumber
+        introduction
       }
     }
   }
@@ -32,7 +20,7 @@ export const LOGIN_USER = gql`
   mutation login($email: String!, $password: String!) {
     login(email: $email, password: $password) {
       token
-      profile {
+      user {
         _id
         username
       }
@@ -40,4 +28,13 @@ export const LOGIN_USER = gql`
   }
 `;
 
+export const UPDATE_USER = gql`
+  mutation updateUser($phonenumber: String!, $introduction: String!) {
+  updateMyAccount(phonenumber: $phonenumber) {
+    _id
+    phonenumber
+    introduction
+  }
+}
+`
 

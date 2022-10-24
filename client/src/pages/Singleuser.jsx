@@ -1,7 +1,7 @@
 import { Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Singleusercard from '../components/Singleusercard';
+import Comment from '../components/Comment';
 import { useQuery } from '@apollo/client';
 import { QUERY_SINGLE_USER } from '../utils/queries';
 
@@ -29,7 +29,7 @@ const Singleuser = (props) => {
       {loading ? (
             <div>Loading...</div>
           ) : (
-            <Singleusercard name={singleUser.username}/>
+            <Comment name={singleUser.username}/>
           )}
 
             {/* <ProfileList

@@ -1,33 +1,70 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Box, TextField, Button } from "@mui/material";
+import { TextField } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { LoadingButton } from "@mui/lab";
-import Checkbox from '@material-ui/core/Checkbox';
-import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
-
+import { UPDATE_USER } from '../utils/mutations';
+import { QUERY_USERS } from '../utils/queries';
+import { useMutation } from '@apollo/client';
+import Auth from '../../src/utils/auth';
 
 const Profile = () => {
 
+  const [addUser, { error }] = useMutation(UPDATE_USER, {
+    update(cache, { data: { addUser } }) {
+      try {
+        const { users } = cache.readQuery({ query: QUERY_USERS });
+        
+        cache.writeQuery({
+          query: QUERY_USERS,
+          data: { users: [addUser, ...users] },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      
+    },
+  });
+  // const [phonenumber, setPhonenumber] = useState("");
+  // const [text, setText] = useState("");
+  
   const [formState, setFormState] = useState({
-    phonenumber: '',
-    introduction: '',
-    wanttobabysit: '',
-    haslicense: '',
-    howmuchexperience: '',
-    candolightduties: '',
-    candopickupdropoff: '',
-    covidvaccinated: '',
-    availabledays: ''
+    phonenumber: "", 
+    introduction: "",
   });
 
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+  const handleChange = (event) => {
+		const { id, value } = event.target;
+		setFormState({
+			...formState,
+			[id]: value,
+		});
+	};
+  
+  // add data to user
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    const mutationResponse = await addUser({
+			variables: { ...formState },
+		});
+		const token = mutationResponse.data.addUser.token; //removed token
+		Auth.getUser(token); //revised AuthService value
+  };
+
+  const navigate = useNavigate((event) => {
+		event.preventDefault();
+	});
+
+  const success =() => {
+		navigate('/dashboard')
+	}
+
 
   return (
     <div>
       <h3>
         This is Profile page. you can edit your profile.
       </h3>
+      <h4>Your phone number</h4>
 
       <TextField 
         fullWidth 
@@ -40,6 +77,8 @@ const Profile = () => {
         // error={usernameErrText !== ""}
         // disabled={loading}
       />
+    
+
       <h4>Tell us about yourself.</h4>
       <TextField 
         fullWidth 
@@ -52,43 +91,7 @@ const Profile = () => {
         // error={usernameErrText !== ""}
         // disabled={loading}
       />
-      <h4>Will you be a baby sitter?</h4>
-      <Checkbox {...label} />
-
-      <h4>How long is your experience as a baby sitter?</h4>
-      <TextField 
-        fullWidth 
-        id="experience" 
-        label="your experience" 
-        margin="normal"
-        name="experience"
-        required
-        // helperText={usernameErrText}
-        // error={usernameErrText !== ""}
-        // disabled={loading}
-      />
-      <h4>Do you have your Blue card ?</h4>
-      <Checkbox {...label} />
-
-      <h4>Can you do light duties?</h4>
-      <Checkbox {...label} />
       
-      <h4>Can you do pick up and drop off?</h4>
-      <Checkbox {...label} />
-      
-      <h4>Are you Covid vaccinated?</h4>
-      <Checkbox {...label} />
-      
-      <h4>What are your available days?</h4>
-      <FormGroup>
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Monday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Tuesday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Wedneday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Thursday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Friday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Saturday" />
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Sunday" />
-      </FormGroup>
 
       <LoadingButton 
         sx={{ mt: 3, mb: 2}} 
@@ -97,8 +100,10 @@ const Profile = () => {
         // loading={loading}
         color="primary"
         variant="outlined"
+        onSubmit={handleFormSubmit}
+        onClick={success}
       >
-        Create Account
+        Add my profile
       </LoadingButton>
     </div>
   )
